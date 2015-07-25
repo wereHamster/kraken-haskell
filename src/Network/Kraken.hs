@@ -12,7 +12,9 @@ module Network.Kraken
     ) where
 
 
+import Control.Applicative
 import Control.Monad.Except
+
 import Data.ByteString (ByteString)
 import Data.ByteString.Lazy (toStrict)
 import Data.Aeson hiding (Success, Error)
@@ -22,6 +24,8 @@ import Data.Maybe
 import Network.HTTP.Client hiding (Response)
 import Network.HTTP.Client.MultipartFormData
 import Network.HTTP.Client.TLS (tlsManagerSettings)
+
+import Prelude
 
 
 
