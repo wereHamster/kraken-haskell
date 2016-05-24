@@ -33,7 +33,7 @@ library
      Network.Kraken
 
   build-depends:
-     base >=4.5 && <4.9
+     base >=4.5 && <4.10
    , bytestring
    , http-client
    , http-client-tls
