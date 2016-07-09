@@ -133,9 +133,8 @@ newHandle c = do
 
 compressImage :: Handle -> Options -> ByteString -> IO (Either Error ByteString)
 compressImage h opt img = do
-    let Just req0 = parseUrl "https://api.kraken.io/v1/upload"
-    req <- insertRequestBody req0
-    res <- httpLbs (req { checkStatus = \_ _ _ -> Nothing }) (hManager h)
+    req <- insertRequestBody $ parseRequest_ "https://api.kraken.io/v1/upload"
+    res <- httpLbs req (hManager h)
 
     runExceptT $ do
         v <- case eitherDecode' (responseBody res) of
@@ -167,7 +166,7 @@ compressImage h opt img = do
 
 downloadBinary :: Manager -> String -> IO (Either Error ByteString)
 downloadBinary m url = runExceptT $ do
-    req <- ExceptT $ return $ case parseUrl url of
+    req <- ExceptT $ return $ case parseRequest url of
         Nothing -> throwError $ Error $ "Failed to parse download URL: " ++ url
         Just x -> return x
 
