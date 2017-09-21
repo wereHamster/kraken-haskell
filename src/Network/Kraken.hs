@@ -17,7 +17,7 @@ import Control.Monad.Except
 
 import Data.ByteString (ByteString)
 import Data.ByteString.Lazy (toStrict)
-import Data.Aeson hiding (Success, Error)
+import Data.Aeson hiding (Success, Error, Options)
 import Data.Aeson.Types hiding (Success, Error, Options)
 import Data.Maybe
 
